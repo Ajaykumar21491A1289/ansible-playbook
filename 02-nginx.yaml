@@ -1,0 +1,14 @@
+- name: install and run nginx              #A description of what the playbook does. Here, it's "Install and run nginx".
+  host: web                                #Specifies the target group of hosts where the playbook will run. The group web should be defined in your Ansible inventory file.
+  become: yes                              #it will get root access
+  tasks:                                   #Tasks are the individual actions that Ansible will execute on the target hosts. They are defined under the tasks list.
+   - name: install nginx package           #Describes the task, making it clear that this task installs the Nginx package.
+     ansible.builtin.package:              #An Ansible module to manage packages
+       name: nginx                         #Specifies the package name to install, in this case, nginx.
+       state: present                      #Ensures that the package is present. If it's not installed, Ansible will install it.
+   - name: run nginx                       
+     ansible.builtin.service:
+       name: nginx
+       state: started                      #Ensures that the service is started. If the service is not running, Ansible will start it.
+
+

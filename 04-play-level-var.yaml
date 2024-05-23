@@ -1,0 +1,9 @@
+-name: variables from play level
+ hosts: localhost
+ vars:
+  name: "ajay"
+  course: "devops"
+ tasks:
+ -name: check variables
+  ansible.builtin.debug:
+     msg: "Hi {{name}} welcome to {{course}}"
